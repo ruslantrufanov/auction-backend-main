@@ -21,7 +21,6 @@ async function start() {
     app.use('/api/bids', bidRoutes);
     app.use('/api/users', userRoutes);
 
-    // 🔥 АВТО-ЗАПУСК DEMO
     await runDemo();
 
     app.use(express.static(path.join(__dirname, '../public')));
