@@ -8,7 +8,7 @@ import userRoutes from './routes/users';
 
 import runDemo from './scripts/runDemo';
 
-const MONGO_URI = 'mongodb+srv://trufanovruslan33_db_user:lJhbRhkkJja4AO9T@cluster0.udmtua5.mongodb.net/auction?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://trufanovruslan33_db_user:D6jboZsKcXcXRpzp@cluster0.udmtua5.mongodb.net/auction?retryWrites=true&w=majority';
 
 async function start() {
   try {
