@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Auction Prototype</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            color: #202124;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 1.8rem; margin-bottom: 20px; }
+        h2 { font-size: 1.2rem; margin-top: 20px; }
+        h3 { font-size: 1rem; margin-top: 15px; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.4);
+            width: calc(100% - 24px);
+            margin-bottom: 10px;
+            outline: none;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.25);
+            color: #202124;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #0078d4;
+            background: rgba(255,255,255,0.35);
+            box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
+        }
+
+        button {
+            background: rgba(0, 120, 212, 0.8);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: fit-content;
+            backdrop-filter: blur(6px);
+        }
+
+        button:hover {
+            background: rgba(0, 120, 212, 1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th {
+            background: rgba(255,255,255,0.25);
+            font-weight: 600;
+        }
+
+        tr.leader { background-color: rgba(255, 244, 214, 0.3); }
+        tr.winner { background-color: rgba(214, 245, 214, 0.3); }
+
+        #timer {
+            font-weight: 700;
+            color: #d32f2f;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            backdrop-filter: blur(6px);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Live Auction Prototype</h1>
+
+<div class="card section">
+    <h2>Create User</h2>
+    <input id="newUserBalance" type="number" placeholder="Initial Balance" value="1000">
+    <button id="createUser">Create User</button>
+    <pre id="createdUser"></pre>
+</div>
+
+<div class="card section">
+    <h2>Create Auction</h2>
+    <input id="itemName" placeholder="Item Name" value="Limited Gift">
+    <input id="totalItems" type="number" placeholder="Total Items" value="3">
+    <button id="createAuction">Create Auction</button>
+</div>
+
+<div class="card section">
+    <h2>Place Bid</h2>
+    <input id="userId" placeholder="User ID">
+    <input id="auctionId" placeholder="Auction ID">
+    <input id="amount" type="number" placeholder="Amount">
+    <button id="placeBid">Place Bid</button>
+</div>
+
+<div class="card section">
+    <h2>Auction Status</h2>
+    <p>Item: <span id="currentItem">-</span></p>
+    <p>Remaining Items: <span id="remainingItems">-</span></p>
+    <p>Round ends in: <span id="timer">-</span> seconds</p>
+
+    <h3>Live Bids</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Amount</th>
+            <th>Round</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody id="liveBids"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
