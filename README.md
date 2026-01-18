@@ -143,15 +143,9 @@
 
 ## 4. Запуск проекта
 
-### Переменные окружения
-
-PORT=3000  
-MONGO_URL=mongodb://localhost:27017/auction
-
 ### Локальный запуск
 
-npm install  
-npm run dev
+```docker compose up --build```
 
 Сервер будет доступен по адресу  
 http://localhost:3000
